@@ -5,6 +5,7 @@
 #
 %include	/usr/lib/rpm/macros.php
 Summary:	Jonah is the Horde portal project
+Summary(pl):	Jonah - projekt portalu opartego na Horde
 Name:		horde-%{_hordeapp}
 Version:	0.2
 Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
@@ -38,6 +39,13 @@ for collecting headlines from any site that provides an RSS summary of
 their content. Future plans include a full-fledged my.netscape type
 portal with user preferences, stocks, news, weather, and any other
 content source that users want.
+
+%description -l pl
+Jonah to projekt portalu opartego na Horde. Aktualnie udostêpnia
+szkielet do zbierania nag³ówków z dowolnych serwisów udostêpniaj±cych
+streszczenia tre¶ci w postaci RSS. Dalsze plany obejmuj± pe³ny portal
+w stylu my.netscape z ustawieniami u¿ytkownika, zasobami, nowinkami,
+pogod± i innymi rodzajami tre¶ci.
 
 %prep
 %setup -q -c -T -n %{?_snap:%{_hordeapp}-%{_snap}}%{!?_snap:%{_hordeapp}-%{version}%{?_rc:-%{_rc}}}
