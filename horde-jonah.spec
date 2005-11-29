@@ -23,7 +23,6 @@ Requires:	horde >= 3.0
 Requires:	php-mysql
 Requires:	webapps
 Requires:	webserver = apache
-Conflicts:	apache < 1.3.33-2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
