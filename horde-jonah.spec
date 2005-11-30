@@ -54,33 +54,22 @@ pogod± i innymi rodzajami tre¶ci.
 %setup -qcT -n %{?_snap:%{_hordeapp}-%{_snap}}%{!?_snap:%{_hordeapp}-%{version}%{?_rc:-%{_rc}}}
 tar zxf %{SOURCE0} --strip-components=1
 
+rm -f {,*/}.htaccess
+for i in config/*.dist; do
+	mv $i config/$(basename $i .dist)
+done
 # considered harmful (horde/docs/SECURITY)
 rm -f test.php
 
-rm -f {locale,po}/.htaccess
-
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sysconfdir} \
-	$RPM_BUILD_ROOT%{_appdir}/{docs,lib,locale,templates,themes} \
-	$RPM_BUILD_ROOT%{_appdir}/{channels,delivery,lists,stories}
+install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_appdir}/docs}
 
-cp -a *.php			$RPM_BUILD_ROOT%{_appdir}
-for i in config/*.dist; do
-	cp -a $i $RPM_BUILD_ROOT%{_sysconfdir}/$(basename $i .dist)
-done
-echo '<?php ?>' >		$RPM_BUILD_ROOT%{_sysconfdir}/conf.php
-cp -p config/conf.xml	$RPM_BUILD_ROOT%{_sysconfdir}/conf.xml
-touch					$RPM_BUILD_ROOT%{_sysconfdir}/conf.php.bak
-
-cp -a lib/*			$RPM_BUILD_ROOT%{_appdir}/lib
-cp -a locale/*			$RPM_BUILD_ROOT%{_appdir}/locale
-cp -a templates/*		$RPM_BUILD_ROOT%{_appdir}/templates
-cp -a themes/*			$RPM_BUILD_ROOT%{_appdir}/themes
-cp -a channels/*		$RPM_BUILD_ROOT%{_appdir}/channels
-cp -a delivery/*		$RPM_BUILD_ROOT%{_appdir}/delivery
-cp -a lists/*			$RPM_BUILD_ROOT%{_appdir}/lists
-cp -a stories/*		$RPM_BUILD_ROOT%{_appdir}/stories
+cp -a *.php $RPM_BUILD_ROOT%{_appdir}
+cp -a config/* $RPM_BUILD_ROOT%{_sysconfdir}
+echo '<?php ?>' > $RPM_BUILD_ROOT%{_sysconfdir}/conf.php
+touch $RPM_BUILD_ROOT%{_sysconfdir}/conf.php.bak
+cp -a lib locale templates themes channels delivery lists stories $RPM_BUILD_ROOT%{_appdir}
 
 ln -s %{_sysconfdir} $RPM_BUILD_ROOT%{_appdir}/config
 ln -s %{_docdir}/%{name}-%{version}/CREDITS $RPM_BUILD_ROOT%{_appdir}/docs
