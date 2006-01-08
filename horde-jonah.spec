@@ -1,7 +1,7 @@
 %define	_hordeapp jonah
-%define	_snap	2005-09-17
+%define	_snap	2006-01-08
 #define	_rc		rc1
-%define	_rel	0.6
+%define	_rel	0.1
 #
 %include	/usr/lib/rpm/macros.php
 Summary:	Jonah is the Horde portal project
@@ -12,7 +12,7 @@ Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
 License:	GPL
 Group:		Applications/WWW
 Source0:	ftp://ftp.horde.org/pub/snaps/%{_snap}/%{_hordeapp}-HEAD-%{_snap}.tar.gz
-# Source0-md5:	3a9bd2b9c1eab41832c3d5783fa8b589
+# Source0-md5:	9fc22127bf804950f08f27d9d2269fd9
 Source1:	%{name}.conf
 URL:		http://www.horde.org/jonah/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
