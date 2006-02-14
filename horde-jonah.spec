@@ -18,11 +18,9 @@ URL:		http://www.horde.org/jonah/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
 BuildRequires:	rpmbuild(macros) >= 1.264
 BuildRequires:	tar >= 1:1.15.1
-Requires:	apache(mod_access)
 Requires:	horde >= 3.0
 Requires:	php-mysql
 Requires:	webapps
-Requires:	webserver = apache
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -73,8 +71,8 @@ cp -a lib locale templates themes channels delivery lists stories $RPM_BUILD_ROO
 
 ln -s %{_sysconfdir} $RPM_BUILD_ROOT%{_appdir}/config
 ln -s %{_docdir}/%{name}-%{version}/CREDITS $RPM_BUILD_ROOT%{_appdir}/docs
-install %{SOURCE1} $RPM_BUILD_ROOT%{_webapps}/%{_webapp}/apache.conf
-install %{SOURCE1} $RPM_BUILD_ROOT%{_webapps}/%{_webapp}/httpd.conf
+install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
+install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
