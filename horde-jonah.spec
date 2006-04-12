@@ -1,5 +1,5 @@
 %define	_hordeapp jonah
-%define	_snap	2006-01-08
+%define	_snap	2006-04-12
 #define	_rc		rc1
 %define	_rel	0.1
 #
@@ -12,7 +12,7 @@ Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
 License:	GPL
 Group:		Applications/WWW
 Source0:	ftp://ftp.horde.org/pub/snaps/%{_snap}/%{_hordeapp}-HEAD-%{_snap}.tar.gz
-# Source0-md5:	9fc22127bf804950f08f27d9d2269fd9
+# Source0-md5:	c0d7fcd79abc88f183fb23c2168f9a24
 Source1:	%{name}.conf
 URL:		http://www.horde.org/jonah/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
@@ -52,7 +52,7 @@ pogod± i innymi rodzajami tre¶ci.
 %setup -qcT -n %{?_snap:%{_hordeapp}-%{_snap}}%{!?_snap:%{_hordeapp}-%{version}%{?_rc:-%{_rc}}}
 tar zxf %{SOURCE0} --strip-components=1
 
-rm {,*/}.htaccess
+rm */.htaccess
 for i in config/*.dist; do
 	mv $i config/$(basename $i .dist)
 done
