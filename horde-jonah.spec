@@ -1,7 +1,7 @@
 %define	_hordeapp jonah
 %define	_snap	2006-04-12
 #define	_rc		rc1
-%define	_rel	0.1
+%define	_rel	0.2
 #
 %include	/usr/lib/rpm/macros.php
 Summary:	Jonah is the Horde portal project
@@ -19,7 +19,7 @@ BuildRequires:	rpm-php-pearprov >= 4.0.2-98
 BuildRequires:	rpmbuild(macros) >= 1.264
 BuildRequires:	tar >= 1:1.15.1
 Requires:	horde >= 3.0
-Requires:	php-mysql
+Requires:	php(mysql)
 Requires:	webapps
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
