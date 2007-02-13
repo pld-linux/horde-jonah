@@ -5,7 +5,7 @@
 #
 %include	/usr/lib/rpm/macros.php
 Summary:	Jonah is the Horde portal project
-Summary(pl.UTF-8):   Jonah - projekt portalu opartego na Horde
+Summary(pl.UTF-8):	Jonah - projekt portalu opartego na Horde
 Name:		horde-%{_hordeapp}
 Version:	0.2
 Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
