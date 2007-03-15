@@ -1,5 +1,5 @@
 %define	_hordeapp jonah
-%define	_snap	2006-04-12
+%define	_snap	2007-03-15
 #define	_rc		rc1
 %define	_rel	0.2
 #
@@ -12,7 +12,7 @@ Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
 License:	GPL
 Group:		Applications/WWW
 Source0:	ftp://ftp.horde.org/pub/snaps/%{_snap}/%{_hordeapp}-HEAD-%{_snap}.tar.gz
-# Source0-md5:	c0d7fcd79abc88f183fb23c2168f9a24
+# Source0-md5:	287b13d7a359d8f64caa278e8bd5f686
 Source1:	%{name}.conf
 URL:		http://www.horde.org/jonah/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
