@@ -1,7 +1,7 @@
 %define	_hordeapp jonah
-%define	_snap	2007-03-15
+%define	_snap	2008-10-10
 #define	_rc		rc1
-%define	_rel	0.2
+%define	_rel	0.1
 #
 %include	/usr/lib/rpm/macros.php
 Summary:	Jonah is the Horde portal project
@@ -12,7 +12,7 @@ Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
 License:	GPL
 Group:		Applications/WWW
 Source0:	ftp://ftp.horde.org/pub/snaps/%{_snap}/%{_hordeapp}-HEAD-%{_snap}.tar.gz
-# Source0-md5:	287b13d7a359d8f64caa278e8bd5f686
+# Source0-md5:	c394efc727440d4b0481cb018d0bb5d3
 Source1:	%{name}.conf
 URL:		http://www.horde.org/jonah/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
@@ -65,7 +65,7 @@ cp -a *.php $RPM_BUILD_ROOT%{_appdir}
 cp -a config/* $RPM_BUILD_ROOT%{_sysconfdir}
 echo '<?php ?>' > $RPM_BUILD_ROOT%{_sysconfdir}/conf.php
 touch $RPM_BUILD_ROOT%{_sysconfdir}/conf.php.bak
-cp -a lib locale templates themes channels delivery lists stories $RPM_BUILD_ROOT%{_appdir}
+cp -a channels delivery lib locale stories templates themes $RPM_BUILD_ROOT%{_appdir}
 cp -a docs/CREDITS $RPM_BUILD_ROOT%{_appdir}/docs
 
 ln -s %{_sysconfdir} $RPM_BUILD_ROOT%{_appdir}/config
@@ -114,14 +114,12 @@ fi
 
 %dir %{_appdir}
 %{_appdir}/*.php
+%{_appdir}/channels
 %{_appdir}/config
+%{_appdir}/delivery
 %{_appdir}/docs
 %{_appdir}/lib
 %{_appdir}/locale
+%{_appdir}/stories
 %{_appdir}/templates
 %{_appdir}/themes
-
-%{_appdir}/channels
-%{_appdir}/delivery
-%{_appdir}/lists
-%{_appdir}/stories
