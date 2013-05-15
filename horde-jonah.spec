@@ -1,7 +1,7 @@
 %define	_hordeapp jonah
 %define	_snap	2008-10-10
 #define	_rc		rc1
-%define	_rel	0.1
+%define	_rel	1
 #
 %include	/usr/lib/rpm/macros.php
 Summary:	Jonah is the Horde portal project
@@ -13,7 +13,8 @@ License:	GPL
 Group:		Applications/WWW
 Source0:	ftp://ftp.horde.org/pub/snaps/%{_snap}/%{_hordeapp}-HEAD-%{_snap}.tar.gz
 # Source0-md5:	c394efc727440d4b0481cb018d0bb5d3
-Source1:	%{name}.conf
+Source1:	%{name}-apache.conf
+Source2:	%{name}-httpd.conf
 URL:		http://www.horde.org/jonah/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
 BuildRequires:	rpmbuild(macros) >= 1.264
@@ -21,6 +22,7 @@ BuildRequires:	tar >= 1:1.15.1
 Requires:	horde >= 3.0
 Requires:	php(mysql)
 Requires:	webapps
+Conflicts:	apache-base < 2.4.0-1
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -70,7 +72,7 @@ cp -a docs/CREDITS $RPM_BUILD_ROOT%{_appdir}/docs
 
 ln -s %{_sysconfdir} $RPM_BUILD_ROOT%{_appdir}/config
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
+install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -95,10 +97,10 @@ fi
 %triggerun -- apache1 < 1.3.37-3, apache1-base
 %webapp_unregister apache %{_webapp}
 
-%triggerin -- apache < 2.2.0, apache-base
+%triggerin -- apache-base
 %webapp_register httpd %{_webapp}
 
-%triggerun -- apache < 2.2.0, apache-base
+%triggerun -- apache-base
 %webapp_unregister httpd %{_webapp}
 
 %files
