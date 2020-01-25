@@ -3,7 +3,6 @@
 #define	_rc		rc1
 %define	_rel	2
 #
-%include	/usr/lib/rpm/macros.php
 Summary:	Jonah is the Horde portal project
 Summary(pl.UTF-8):	Jonah - projekt portalu opartego na Horde
 Name:		horde-%{_hordeapp}
