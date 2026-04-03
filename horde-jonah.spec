@@ -1,7 +1,7 @@
 %define	_hordeapp jonah
 %define	_snap	2008-10-10
 #define	_rc		rc1
-%define	_rel	2
+%define	_rel	3
 #
 Summary:	Jonah is the Horde portal project
 Summary(pl.UTF-8):	Jonah - projekt portalu opartego na Horde
